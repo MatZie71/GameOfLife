@@ -1,16 +1,28 @@
 public class Cell {
 
-    private String livingCell;
-    private String deadCell;
+    private String cellStatus;
 
-    public static String getLivingCell(){
 
-        return "[x]";
+    public String getLivingCell() {
+        this.cellStatus = "[x]";
+        return cellStatus;
 
     }
 
-    public String getDeadCell(){
-
-        return "[o]";
+    public String getDeadCell() {
+        this.cellStatus = "[o]";
+        return cellStatus;
     }
+
+    public String getEmptyCell() {
+        this.cellStatus = "[ ]";
+        return cellStatus;
+
+    }
+
+    public String getCellStatus() {
+
+        return cellStatus;
+    }
+
 }

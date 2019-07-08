@@ -6,76 +6,66 @@ public class World {
     private int wiersz = 20;
     private int kolumna = 20;
     private int startingCells;
-    private String[][] world;
+    private Cell[][] world;
 
-    public int startingCells(){
+    public void startingCells() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Podaj ilość komórek startowych");
-        this.startingCells= scan.nextInt();
-        return startingCells;
+        this.startingCells = scan.nextInt();
+
 
     }
 
     public void getPosition() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Podaj pozycje komorki w osi X, od 0do 19");
-        this.cellPositionX= scan.nextInt();
+        this.cellPositionX = scan.nextInt();
 
         System.out.println("Podaj pozycje komorki w osi Y, od 0do 19");
-        this.cellPositionY= scan.nextInt();
+        this.cellPositionY = scan.nextInt();
 
     }
-public void inputCell(){
-
-            getPosition();
-            world[cellPositionY][cellPositionX]=Cell.getLivingCell();
-
-    System.out.println(world);
-
-
-}
 
 
     public void getWorld() {
-                world = new String[wiersz][kolumna];
+        startingCells();
+        Cell[][] world = new Cell[kolumna][wiersz];
 
-
-
-
+// tworzenie czystej planszy
         for (int i = 0; i < world.length; i++) {
-
-            String[] jedenBok = world[i];
-
-            for (int j = 0; j < jedenBok.length; j++) {
-                world[i][j] = "[ ]";
-
-                //=world[cellPositionY][cellPositionX];
-
-                //world[cellPositionY][cellPositionX] = "[x]";
-                /*for(int g=0;g<startingCells;g++){
-                    int nr=1;
-
-                    System.out.println("Podaj pozycje na osi X, komórki nr."+nr);
-                    String cellPositionY = scan.nextLine();
-                    System.out.println("Podaj pozycje na osi Y, komórki nr."+nr);
-                    String cellPositionX = scan.nextLine();
-                    nr++;
-                world[Integer.parseInt(cellPositionY)][Integer.parseInt(cellPositionX)] = "[x]";//zywa komorka
-            }*/
-
-                //System.out.print(world[i][j] + " ");
+            for (int j = 0; j < world[i].length; j++) {
+                world[i][j] = new Cell();
+                world[i][j].getEmptyCell();
 
 
             }
+        }
+//dodawanie zywych komorek
+        for (int q = 0; q < startingCells; q++) {
 
-            //System.out.println();
+            getPosition();
+            world[cellPositionY][cellPositionX].getLivingCell();
+
 
         }
 
+// wyswietlenie planszy startowej
+        for (int e = 0; e < world.length; e++) {
+            for (int r = 0; r < world[e].length; r++) {
+
+                System.out.print(world[e][r].getCellStatus() + " ");
+
+
+            }
+            System.out.println();
+        }
+
+
     }
-
-
-
 }
+
+
+
+
 
 

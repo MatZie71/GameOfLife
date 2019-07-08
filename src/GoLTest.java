@@ -7,9 +7,9 @@ public class GoLTest {
 
 World game=new World();
 
-        game.startingCells();
+
         game.getWorld();
-game.inputCell();
+
 
 
 
