@@ -1,6 +1,8 @@
 public class Cell {
 
     private String cellStatus;
+    public int neighbouringCell = 0;
+    private boolean isCellDead;
 
 
     public String getLivingCell() {
@@ -9,12 +11,8 @@ public class Cell {
 
     }
 
-    public String getDeadCell() {
-        this.cellStatus = "[o]";
-        return cellStatus;
-    }
 
-    public String getEmptyCell() {
+    public String emptyCell() {
         this.cellStatus = "[ ]";
         return cellStatus;
 
@@ -23,6 +21,31 @@ public class Cell {
     public String getCellStatus() {
 
         return cellStatus;
+    }
+
+
+    public void setNeighbouringCell(int x) {
+
+        this.neighbouringCell = x;
+    }
+
+    public int getNeighbouringCell() {
+
+        return neighbouringCell;
+    }
+
+    public void setIsCellDead(String x) {
+        if (x.equals("yes")) {
+            isCellDead = true;
+        } else {
+            isCellDead = false;
+        }
+
+    }
+
+    public boolean getIsCellDead() {
+
+        return isCellDead;
     }
 
 }
